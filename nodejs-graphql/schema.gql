@@ -1,0 +1,50 @@
+enum UserRole {
+  ADMIN
+  USER
+}
+enum HttpStatus {
+  SUCCESS
+  FAILED
+}
+
+type User {
+  id: ID!
+  name: String!
+  age: Int!
+  role: UserRole!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  author: User!
+}
+
+type Response {
+  message: String!
+  status: HttpStatus!
+}
+
+input UserInput {
+  name: String!
+  age: Int!
+  role: UserRole!
+}
+
+#
+type Query {
+  hello: String!
+  users(role: UserRole): [User!]!
+  user(id: ID!): User
+  posts: [Post!]!
+}
+
+type Mutation {
+  addUser(input: UserInput!): User!
+  addPost(title: String!, authorId: ID!): Post!
+}
+
+# {query: {query {users {id, name, email}}}}
+# {query: {mutation {addUser(name, $email) {response {message}}}}, variables: {email: "erfan@gmail.com"}}
+# {query: {mutation {removeUser($id)}}, variables: {id: 1}}
