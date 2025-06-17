@@ -1,0 +1,118 @@
+# 1- Object Types and Fields
+type User {
+  id: ID
+  name: String
+  age: Int
+  posts: [Post]
+}
+type Post {
+  id: ID
+  title: String
+  author: User
+}
+
+# 2- Scalar Types
+# Int, String, Boolean, Float, ID
+
+# 3- Type
+scalar Date;
+type Blog {
+    id: ID
+    title: String
+    content: String
+    published: Boolean
+    published_at: Date
+}
+
+# 4- interface
+interface Animal {
+    id: ID
+    name: String
+}
+
+type Dog implements Animal {
+    id: ID
+    name: String
+    breed: String
+}
+type Cat implements Animal {
+    id: ID
+    name: String
+    color: String
+}
+
+interface Car {
+    id: ID
+    name: String
+    speed: Int
+    model: Int
+    color: String
+}
+enum Options {
+    ESP
+    NITRO
+}
+type BMW implements Car {
+    id: ID
+    name: String
+    speed: Int
+    model: Int
+    color: String
+    options: [Options]
+}
+type Benz implements Car {
+    id: ID
+    name: String
+    speed: Int
+    model: Int
+    color: String
+
+}
+
+interface Human {
+    id: ID
+    firstname: String
+    lastname: String
+    age: Int
+}
+type Student implements Human {
+    id: ID
+    firstname: String
+    lastname: String
+    age: Int
+    score: Int
+    Field: String
+}
+type Employee implements Human {
+    id: ID
+    firstname: String
+    lastname: String
+    age: Int
+    salary: Float
+    WorkTime: String
+}
+
+# 4- ENUM
+enum UserRole {
+    ADMIN
+    TEACHER
+    STUDENT
+}
+type User {
+    id: ID!
+    name: String!
+    role: UserRole!
+}
+
+# 5- union type
+union SearchResult = Category | Product
+union IntString = String | Int
+
+# 6- Non-Null !
+
+# 7- List ([Type])
+
+type User {
+    id: ID!
+    posts: [Post!]!
+}
