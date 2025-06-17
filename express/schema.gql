@@ -1,0 +1,15 @@
+type Message {
+  id: ID!
+  text: String
+}
+input SendMessageInput {
+  text: String!
+}
+type Query {
+  hello: String
+  welcome(name: String): String
+  messages: [Message!]!
+}
+type Mutation {
+  sendMessage(input: SendMessageInput!): Message
+}
